@@ -1,37 +1,78 @@
 <!--<link rel="import" href="../polymer/polymer-element.html">-->
 <link rel="import" href="bower_components/polymer/polymer-element.html">
+<link rel="import" href="bower_components/paper-button/paper-button.html">
+<script src="bower_components/hammerjs/hammer.min.js"></script>
 
 <dom-module id="indicator-button">
-  <template>
-    <style>
-      :host {
-        display: block;
-      }
-    </style>
-    <h2>Hello [[prop1]]!</h2>
-  </template>
+    <template>
+        <style>
+            :host {
+                display : block;
+            }
+        </style>
 
-  <script>
-    /**
-     * `indicator-button`
-     * 
-     *
-     * @customElement
-     * @polymer
-     * @demo demo/index.html
-     */
-    class IndicatorButton extends Polymer.Element {
-      static get is() { return 'indicator-button'; }
-      static get properties() {
-        return {
-          prop1: {
-            type: String,
-            value: 'indicator-button'
-          }
-        };
-      }
-    }
+        <div class="press-button-wrapper">
+            <!--
+            <div class="loading-wrapper" :style="{visibility: isPress ? 'inherit' : 'hidden'}">
+                <_loading :isPress="isPress" @animationEnd="animationEnd"></_loading>
+            </div>
+            -->
 
-    window.customElements.define(IndicatorButton.is, IndicatorButton);
-  </script>
+            <paper-button id="indicator-button" raised class="indigo">Button</paper-button>
+        </div>
+
+    </template>
+
+    <script>
+        /**
+         * `indicator-button`
+         *
+         *
+         * @customElement
+         * @polymer
+         * @demo demo/index.html
+         */
+        class IndicatorButton extends Polymer.Element {
+            //
+            isPress;
+
+            // is
+            static get is () { return 'indicator-button'; }
+
+            /**
+             * properties
+             * @returns {{prop1: {type: StringConstructor, value: string}}}
+             */
+            static get properties () {
+                return {
+                    prop1: {
+                        type : String,
+                        value: 'indicator-button'
+                    }
+                };
+            }
+
+            constructor () {
+                super ();
+            }
+
+            ready () {
+                super.ready ();
+
+                const button = this.shadowRoot.querySelector ('#indicator-button');
+
+                const hammerButton = new Hammer (button, {});
+
+                hammerButton.on ('press', (event) => {
+                    this.isPress = true;
+                });
+
+                hammerButton.on ('pressup', (event) => {
+                    this.isPress = false;
+                });
+            }
+        }
+
+        window.customElements.define (IndicatorButton.is, IndicatorButton);
+    </script>
 </dom-module>

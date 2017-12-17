@@ -1,23 +1,25 @@
 <!--<link rel="import" href="../polymer/polymer-element.html">-->
 <link rel="import" href="bower_components/polymer/polymer-element.html">
-<link rel="import" href="bower_components/paper-button/paper-button.html">
+<link rel="import" href="bower_components/polymer/lib/elements/dom-if.html">
+
 <script src="bower_components/hammerjs/hammer.min.js"></script>
+
+<link rel="import" href="bower_components/paper-button/paper-button.html">
+<link rel="import" href="./svg-loading.html">
 
 <dom-module id="indicator-button">
     <template>
         <style>
             :host {
-                display : block;
+            }
+
+            .press-button-wrapper {
+                display : inline-block;
             }
         </style>
 
         <div class="press-button-wrapper">
-            <!--
-            <div class="loading-wrapper" :style="{visibility: isPress ? 'inherit' : 'hidden'}">
-                <_loading :isPress="isPress" @animationEnd="animationEnd"></_loading>
-            </div>
-            -->
-
+            <svg-loading press="{{isPress}}"></svg-loading>
             <paper-button id="indicator-button" raised class="indigo">Button</paper-button>
         </div>
 
@@ -33,10 +35,6 @@
          * @demo demo/index.html
          */
         class IndicatorButton extends Polymer.Element {
-            //
-            isPress;
-
-            // is
             static get is () { return 'indicator-button'; }
 
             /**
@@ -54,6 +52,8 @@
 
             constructor () {
                 super ();
+
+                this.isPress = false;
             }
 
             ready () {
@@ -69,6 +69,13 @@
 
                 hammerButton.on ('pressup', (event) => {
                     this.isPress = false;
+                });
+
+                const loading = this.shadowRoot.querySelector ('svg-loading');
+
+                loading.addEventListener ('animationEnd', (event) => {
+                    // 200ms後にLoadingを消す
+                    setTimeout (() => this.isPress = false, 200);
                 });
             }
         }

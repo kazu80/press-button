@@ -1,0 +1,106 @@
+<!--<link rel="import" href="../polymer/polymer-element.html">-->
+<link rel="import" href="bower_components/polymer/polymer-element.html">
+
+<dom-module id="svg-loading">
+    <template>
+        <style>
+            :host {
+                display  : block;
+                position : relative;
+            }
+
+            .loading {
+                position         : absolute;
+                top              : -10px;
+                left             : 50%;
+                transform        : translate(-50%, 0) rotate(-90deg);
+                background-color : rgba(0, 0, 0, .8);
+                border-radius    : 4px;
+                padding          : 1vh;
+            }
+
+            .loading circle {
+                cx                : 50px;
+                cy                : 50px;
+                r                 : 45px;
+                stroke-width      : 5;
+                stroke            : #ffcc00;
+                fill              : none;
+                stroke-linecap    : round;
+                stroke-dasharray  : 283 283;
+                stroke-dashoffset : 283;
+            }
+
+            .loading .circle-animation {
+                animation-name            : circle;
+                animation-duration        : 1s;
+                animation-iteration-count : 1;
+                animation-fill-mode       : forwards;
+            }
+
+            @keyframes circle {
+                from {
+                    stroke-dashoffset : 283;
+                }
+                to {
+                    stroke-dashoffset : 0;
+                }
+            }
+        </style>
+
+        <svg class="loading"
+             version="1.1"
+             xmlns="http://www.w3.org/2000/svg"
+             xmlns:xlink="http://www.w3.org/1999/xlink"
+             width="50"
+             height="50"
+             viewBox="0 0 100 100"
+        >
+
+            <circle/>
+        </svg>
+    </template>
+
+    <script>
+        class SvgLoading extends Polymer.Element {
+            static get is () { return 'svg-loading'; }
+
+            static get properties () {
+                return {
+                    press: {
+                        type    : Boolean,
+                        notify  : true,
+                        observer: '_observerPress',
+                    }
+                }
+            }
+
+            constructor () {
+                super ();
+            }
+
+            ready () {
+                super.ready ();
+
+                this.circle = this.shadowRoot.querySelector ('circle');
+
+                this.circle.addEventListener ('animationend', (event) => {
+                    this.dispatchEvent (new CustomEvent ('animationEnd'));
+                });
+            }
+
+            _observerPress (val) {
+                this.circle = this.shadowRoot.querySelector ('circle');
+
+                if (val) {
+                    this.circle.classList.add ('circle-animation');
+                }
+                else {
+                    this.circle.classList.remove ('circle-animation');
+                }
+            }
+        }
+
+        window.customElements.define (SvgLoading.is, SvgLoading);
+    </script>
+</dom-module>

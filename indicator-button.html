@@ -78,6 +78,9 @@
                 const loading = this.shadowRoot.querySelector ('svg-loading');
 
                 loading.addEventListener ('animationEnd', (event) => {
+                    // Fire Event
+                    this.dispatchEvent (new CustomEvent ('decided'));
+
                     // 200ms後にLoadingを消す
                     setTimeout (() => this._invisible (), 200);
                 });

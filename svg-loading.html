@@ -11,24 +11,31 @@
 
             .loading {
                 position         : absolute;
-                top              : -10px;
+                top              : -60px;
                 left             : 50%;
-                transform        : translate(-50%, 0) rotate(-90deg);
+                transform        : translate(-50%, 0);
                 background-color : rgba(0, 0, 0, .8);
                 border-radius    : 4px;
-                padding          : 1vh;
             }
 
             .loading circle {
                 cx                : 50px;
                 cy                : 50px;
-                r                 : 45px;
+                r                 : 40px;
                 stroke-width      : 5;
                 stroke            : #ffcc00;
                 fill              : none;
                 stroke-linecap    : round;
                 stroke-dasharray  : 283 283;
                 stroke-dashoffset : 283;
+                transform         : rotate(-90deg);
+                transform-origin  : center;
+            }
+
+            .loading text {
+                visibility : hidden;
+                font-size  : 35px;
+                fill       : #ffcc00;
             }
 
             .loading .circle-animation {
@@ -56,8 +63,8 @@
              height="50"
              viewBox="0 0 100 100"
         >
-
-            <circle/>
+            <circle></circle>
+            <text x="50%" y="50%" transform="translate(-23, 11)">OK</text>
         </svg>
     </template>
 
@@ -83,8 +90,15 @@
                 super.ready ();
 
                 this.circle = this.shadowRoot.querySelector ('circle');
+                this.text = this.shadowRoot.querySelector ('text');
 
+                // Event Animation End
                 this.circle.addEventListener ('animationend', (event) => {
+
+                    // visible OK
+                    this.text.style.visibility = 'visible';
+
+                    // Fire Event
                     this.dispatchEvent (new CustomEvent ('animationEnd'));
                 });
             }
@@ -96,6 +110,10 @@
                     this.circle.classList.add ('circle-animation');
                 }
                 else {
+                    if (this.text) {
+                        this.text.style.visibility = 'hidden';
+                    }
+
                     this.circle.classList.remove ('circle-animation');
                 }
             }

@@ -28,7 +28,7 @@
 
         <div class="press-button-wrapper">
             <svg-loading press="{{isPress}}" class$="{{visibleClass}}"></svg-loading>
-            <paper-button id="indicator-button" raised class="indigo">Button</paper-button>
+            <paper-button id="indicator-button" raised="{{raised}}" class="indigo">Button</paper-button>
         </div>
 
     </template>
@@ -47,10 +47,14 @@
 
             /**
              * properties
-             * @returns {{prop1: {type: StringConstructor, value: string}}}
              */
             static get properties () {
                 return {
+                    raised: {
+                        type              : Boolean,
+                        reflectToAttribute: true,
+                        value             : false,
+                    }
                 };
             }
 

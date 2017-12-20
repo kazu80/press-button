@@ -28,7 +28,9 @@
 
         <div class="press-button-wrapper">
             <svg-loading press="{{isPress}}" class$="{{visibleClass}}"></svg-loading>
-            <paper-button id="indicator-button" raised="{{raised}}" class="indigo">Button</paper-button>
+            <paper-button id="indicator-button" raised="{{raised}}" class="indigo">
+                <slot></slot>
+            </paper-button>
         </div>
 
     </template>
@@ -50,6 +52,11 @@
              */
             static get properties () {
                 return {
+                    type  : {
+                        type    : String,
+                        value   : 'button',
+                        observer: '_setType'
+                    },
                     raised: {
                         type              : Boolean,
                         reflectToAttribute: true,
@@ -87,6 +94,12 @@
 
                     // 200ms後にLoadingを消す
                     // setTimeout (() => this._invisible (), 200);
+
+                    // Submit
+                    if (this.isSubmit) {
+                        const form = document.querySelector ('form');
+                        form.submit ();
+                    }
                 });
             }
 
@@ -98,6 +111,10 @@
             _invisible () {
                 this.isPress = false;
                 this.visibleClass = 'invisible';
+            }
+
+            _setType (val) {
+                this.isSubmit = val === 'submit';
             }
         }
 

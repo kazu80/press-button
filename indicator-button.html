@@ -5,16 +5,28 @@
 <script src="bower_components/hammerjs/hammer.min.js"></script>
 
 <link rel="import" href="bower_components/paper-button/paper-button.html">
+<link rel="import" href="bower_components/paper-styles/paper-styles.html">
 <link rel="import" href="./svg-loading.html">
 
 <dom-module id="indicator-button">
     <template>
         <style>
             :host {
+
+            }
+
+            paper-button {
+                font-family            : 'Roboto', 'Noto', sans-serif;
+                font-weight            : normal;
+                -webkit-font-smoothing : antialiased;
             }
 
             .press-button-wrapper {
                 display : inline-block;
+            }
+
+            .press-button {
+                @apply --press-button;
             }
 
             .visible {
@@ -27,8 +39,8 @@
         </style>
 
         <div class="press-button-wrapper">
-            <svg-loading press="{{isPress}}" class$="{{visibleClass}}"></svg-loading>
-            <paper-button id="indicator-button" raised="{{raised}}" class="indigo">
+            <svg-loading press="{{isPress}}" class$="{{visibleClass}}" class="loading"></svg-loading>
+            <paper-button id="indicator-button" raised="{{raised}}" class="press-button">
                 <slot></slot>
             </paper-button>
         </div>
@@ -90,7 +102,7 @@
 
                 loading.addEventListener ('animationEnd', (event) => {
                     // Fire Event
-                    this.dispatchEvent (new CustomEvent ('decided'));
+                    this.dispatchEvent (new CustomEvent ('pressed'));
 
                     // 200ms後にLoadingを消す
                     // setTimeout (() => this._invisible (), 200);

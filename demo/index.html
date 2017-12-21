@@ -20,6 +20,24 @@
 
     <custom-style>
       <style is="custom-style" include="demo-pages-shared-styles">
+        indicator-button {
+          --press-button: {
+            background-color : var(--paper-indigo-500);
+            color            : white;
+          };
+
+          --loading-circle: {
+            stroke : #ff0000;
+          };
+
+          --loading-background: {
+            background-color : rgba(255, 255, 255, .5);
+          };
+
+          --loading-text: {
+            fill : #ff0000;
+          }
+        }
       </style>
     </custom-style>
   </head>
@@ -29,7 +47,7 @@
       <demo-snippet>
         <template>
             <form action="index.html?foo=bar" method="get">
-                <indicator-button type="submit" raised>PRESS</indicator-button>
+              <indicator-button type="button" raised>PRESS</indicator-button>
             </form>
         </template>
       </demo-snippet>

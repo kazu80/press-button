@@ -16,6 +16,7 @@
                 transform        : translate(-50%, 0);
                 background-color : rgba(0, 0, 0, .8);
                 border-radius    : 4px;
+                @apply --loading-background;
             }
 
             .loading circle {
@@ -30,12 +31,14 @@
                 stroke-dashoffset : 283;
                 transform         : rotate(-90deg);
                 transform-origin  : center;
+                @apply --loading-circle;
             }
 
             .loading text {
                 visibility : hidden;
                 font-size  : 35px;
                 fill       : #ffcc00;
+                @apply --loading-text;
             }
 
             .loading .circle-animation {

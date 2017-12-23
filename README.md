@@ -1,4 +1,4 @@
-# \<indicator-button\>
+# \<press-button\>
 
 
 

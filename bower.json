@@ -1,6 +1,6 @@
 {
-  "name": "indicator-button",
-  "main": "indicator-button.html",
+  "name": "press-button",
+  "main": "press-button.html",
   "dependencies": {
     "polymer": "Polymer/polymer#^2.0.0",
     "hammerjs": "hammer#^2.0.8"

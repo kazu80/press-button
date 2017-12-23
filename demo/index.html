@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <title>indicator-button demo</title>
+    <title>press-button demo</title>
 
     <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
     <link rel="import" href="../bower_components/iron-demo-helpers/demo-pages-shared-styles.html">
@@ -16,11 +16,11 @@
     <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
     <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
     -->
-    <link rel="import" href="../indicator-button.html">
+    <link rel="import" href="../press-button.html">
 
     <custom-style>
       <style is="custom-style" include="demo-pages-shared-styles">
-        indicator-button {
+        press-button {
           --press-button: {
             background-color : var(--paper-indigo-500);
             color            : white;
@@ -43,11 +43,11 @@
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h3>Basic indicator-button demo</h3>
+      <h3>Basic press-button demo</h3>
       <demo-snippet>
         <template>
             <form action="index.html?foo=bar" method="get">
-              <indicator-button type="button" raised>PRESS</indicator-button>
+              <press-button type="button" raised>PRESS</press-button>
             </form>
         </template>
       </demo-snippet>

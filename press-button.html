@@ -8,7 +8,7 @@
 <link rel="import" href="bower_components/paper-styles/paper-styles.html">
 <link rel="import" href="./svg-loading.html">
 
-<dom-module id="indicator-button">
+<dom-module id="press-button">
     <template>
         <style>
             :host {
@@ -40,7 +40,7 @@
 
         <div class="press-button-wrapper">
             <svg-loading press="{{isPress}}" class$="{{visibleClass}}" class="loading"></svg-loading>
-            <paper-button id="indicator-button" raised="{{raised}}" class="press-button">
+            <paper-button id="press-button" raised="{{raised}}" class="press-button">
                 <slot></slot>
             </paper-button>
         </div>
@@ -49,7 +49,7 @@
 
     <script>
         /**
-         * `indicator-button`
+         * `press-button`
          *
          *
          * @customElement
@@ -57,7 +57,7 @@
          * @demo demo/index.html
          */
         class IndicatorButton extends Polymer.Element {
-            static get is () { return 'indicator-button'; }
+            static get is () { return 'press-button'; }
 
             /**
              * properties
@@ -86,7 +86,7 @@
             ready () {
                 super.ready ();
 
-                const button = this.shadowRoot.querySelector ('#indicator-button');
+                const button = this.shadowRoot.querySelector ('#press-button');
 
                 const hammerButton = new Hammer (button, {});
 

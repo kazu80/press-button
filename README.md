@@ -19,7 +19,7 @@ It need press at 1 second(default). If release press before end. It mean is canc
 ```
 -->
 ```html
-<press-button type="button" raised></press-button>
+<press-button type="button" raised>PRESS ME</press-button>
 ```
 
 ## Installation

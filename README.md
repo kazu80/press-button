@@ -36,14 +36,14 @@ At first. Import it at header.
     <link rel="import" href="../bower_components/press-button/press-button.html">
 ```
 
-Next. Add the `audio-player` custom tag in body.
+Next. Add the `press-button` custom tag in body.
 
 ```html
     <press-button type="button" raised></press-button>
 ```
 
-* type: Choice action type button or submit
-* raised: Design of floating
+* `type` Choice action type button or submit
+* `raised` Design of floating
 
 
 ## CSS

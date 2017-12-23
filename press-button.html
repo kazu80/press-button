@@ -104,9 +104,6 @@
                     // Fire Event
                     this.dispatchEvent (new CustomEvent ('pressed'));
 
-                    // 200ms後にLoadingを消す
-                    // setTimeout (() => this._invisible (), 200);
-
                     // Submit
                     if (this.isSubmit) {
                         const form = document.querySelector ('form');

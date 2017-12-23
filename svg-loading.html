@@ -46,6 +46,7 @@
                 animation-duration        : 1s;
                 animation-iteration-count : 1;
                 animation-fill-mode       : forwards;
+                @apply --circle-animation;
             }
 
             @keyframes circle {
@@ -97,6 +98,8 @@
 
                 // Event Animation End
                 this.circle.addEventListener ('animationend', (event) => {
+
+                    console.log ('animationend!');
 
                     // visible OK
                     this.text.style.visibility = 'visible';

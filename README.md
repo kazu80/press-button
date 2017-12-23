@@ -1,21 +1,46 @@
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/owner/my-element)
+
 # \<press-button\>
 
+This is button element. But not react by click. It need press action.
+It need press at 1 second(default). If release press before end. It mean is cancel.
 
+## DEMO
 
-## Install the Polymer-CLI
+<!--
+```html
+<custom-element-demo>
+  <template>
+    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="press-button.html">
+    <next-code-block></next-code-block>
+  </template>
+</custom-element-demo>
+```
+-->
+```html
+<press-button type="button" raised></press-button>
+```
 
-First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polymer-cli) installed. Then run `polymer serve` to serve your element locally.
-
-## Viewing Your Element
+## Installation
 
 ```
-$ polymer serve
+$ bower install --save monkick/press-button
 ```
 
-## Running Tests
+## Usage
 
-```
-$ polymer test
+At first. Import it at header.  
+
+```html
+    <link rel="import" href="../bower_components/press-button/press-button.html">
 ```
 
-Your application is already set up to be tested via [web-component-tester](https://github.com/Polymer/web-component-tester). Run `polymer test` to run your application's test suite locally.
+Next. Add the `audio-player` custom tag in body.
+
+```html
+    <press-button type="button" raised></press-button>
+```
+
+* type: Choice action type button or submit
+* raised: Design of floating

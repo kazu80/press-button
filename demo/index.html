@@ -20,9 +20,9 @@
 
     <custom-style>
       <style is="custom-style" include="demo-pages-shared-styles">
-        press-button {
+        #sample1 {
           --press-button: {
-            background-color : var(--paper-indigo-500);
+            background-color : var(--paper-amber-400);
             color            : white;
           };
 
@@ -31,7 +31,7 @@
           };
 
           --loading-background: {
-            background-color : rgba(255, 255, 255, .5);
+            background-color : rgba(0, 0, 0, .5);
           };
 
           --loading-text: {
@@ -42,6 +42,17 @@
             animation-duration : 2s;
           };
         }
+
+        #sample2 {
+          --press-button: {
+            background-color : var(--paper-indigo-400);
+            color            : white;
+          };
+
+          --circle-animation: {
+            animation-duration : 800ms;
+          };
+        }
       </style>
     </custom-style>
   </head>
@@ -50,9 +61,22 @@
       <h3>Basic press-button demo</h3>
       <demo-snippet>
         <template>
-            <form action="index.html?foo=bar" method="get">
-              <press-button type="button" raised>PRESS</press-button>
-            </form>
+          <press-button id="sample1" type="button" raised>PRESS ME</press-button>
+          <script>
+              const button = document.getElementById ('sample1');
+              button.addEventListener ('pressed', () => {
+                  window.alert ('button pressed!');
+              });
+          </script>
+        </template>
+      </demo-snippet>
+
+      <demo-snippet>
+        <template>
+          <form action="index.html" method="GET">
+            <input type="hidden" name="foo" value="bar">
+            <press-button id="sample2" type="submit" raised>PRESS</press-button>
+          </form>
         </template>
       </demo-snippet>
     </div>

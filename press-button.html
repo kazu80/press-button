@@ -101,6 +101,9 @@
                 const loading = this.shadowRoot.querySelector ('svg-loading');
 
                 loading.addEventListener ('animationEnd', (event) => {
+                    // 400ms後にLoadingを消す
+                    setTimeout (() => this._invisible (), 400);
+
                     // Fire Event
                     this.dispatchEvent (new CustomEvent ('pressed'));
 

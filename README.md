@@ -44,3 +44,12 @@ Next. Add the `audio-player` custom tag in body.
 
 * type: Choice action type button or submit
 * raised: Design of floating
+
+
+## CSS
+
+|--press-button|button style|
+|--loading-circle|indicater style|
+|--loading-background|indicater background style|
+|--loading-text|indicater end text(svg) style|
+|--circle-animation|indicater animation style|

@@ -39,7 +39,7 @@ At first. Import it at header.
 Next. Add the `press-button` custom tag in body.
 
 ```html
-    <press-button type="button" raised></press-button>
+    <press-button type="button" raised>PRESS ME</press-button>
 ```
 
 * `type` Choice action type button or submit

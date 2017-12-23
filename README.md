@@ -49,6 +49,7 @@ Next. Add the `audio-player` custom tag in body.
 ## CSS
 
 | key | description |
+----|---- 
 | --press-button | button style |
 | --loading-circle | indicater style |
 | --loading-background | indicater background style |

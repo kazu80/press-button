@@ -19,7 +19,9 @@ It need press at 1 second(default). If release press before end. It mean is canc
 ```
 -->
 ```html
+<div style="padding: 100px 0 0">
 <press-button type="button" raised>PRESS ME</press-button>
+</div>
 ```
 
 ## Installation
